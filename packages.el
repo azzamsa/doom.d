@@ -3,3 +3,4 @@
 
 (package! evil-colemak-basics)
 (package! super-save)
+(package! org-cliplink)

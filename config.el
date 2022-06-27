@@ -41,6 +41,22 @@
 ;; rarely. So opt for manual completion:
 (setq company-idle-delay 0.5)
 
+
+(use-package! org
+  :config
+  (defun goto-last-heading ()
+    "Useful when adding new heading"
+    (interactive)
+    (org-end-of-subtree))
+
+  ;; add time information when a task moves to a DONE state
+  (setq org-log-done 'time)
+
+  (setq org-todo-keywords '((sequence "TODO(t!)" "|" "DONE(d!)")
+                            (sequence "WAITING(w@/!)" "|")
+                            (sequence "DOING(s!)" "|")
+                            (sequence "|" "CANCELED(c@)"))))
+
 ;;
 ;; workarounds
 ;;

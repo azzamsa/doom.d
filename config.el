@@ -107,6 +107,9 @@ This command does not push text to `kill-ring'."
 ;; misc
 ;;
 
+;; Emacs doesn't play well with fish
+(setq shell-file-name "/bin/bash")
+
 ;; Disable invasive lsp-mode features
 (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
       lsp-ui-doc-enable nil        ; slow and redundant with K

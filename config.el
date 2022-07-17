@@ -27,11 +27,6 @@
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;;
-;; global keybindings
-;;
-(map! "<M-backspace>" #'my-backward-delete-word)
-
-;;
 ;; buit-in
 ;;
 
@@ -56,39 +51,6 @@
                             (sequence "WAITING(w@/!)" "|")
                             (sequence "DOING(s!)" "|")
                             (sequence "|" "CANCELED(c@)"))))
-
-;;
-;; workarounds
-;;
-
-(defun my-backward-delete-word (arg)
-  "Delete characters backward until encountering the beginning of a word.
-With argument, do this that many times.
-This command does not push text to `kill-ring'."
-  (interactive "p")
-  (my-delete-word (- arg)))
-
-(defun my-delete-word (arg)
-  "Delete characters forward until encountering the end of a word.
-With argument, do this that many times.
-This command does not push text to `kill-ring'."
-  (interactive "p")
-  (delete-region
-   (point)
-   (progn
-     (forward-word arg)
-     (point))))
-
-;; I don't like working with Emacs internal keyring
-(define-key evil-normal-state-map "x" 'delete-forward-char); delete to the black hole
-(define-key evil-normal-state-map "X" 'delete-backward-char)
-
-(defun meain/evil-delete-advice (orig-fn beg end &optional type _ &rest args)
-    "Make d, c, x to not write to clipboard."
-    (apply orig-fn beg end type ?_ args))
-
-(advice-add 'evil-delete :around 'meain/evil-delete-advice)
-(advice-add 'evil-change :around 'meain/evil-delete-advice)
 
 ;;
 ;; Keybindings

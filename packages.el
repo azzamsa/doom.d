@@ -5,3 +5,4 @@
 (package! super-save)
 (package! org-cliplink)
 (package! fish-mode)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))

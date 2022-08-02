@@ -99,3 +99,5 @@
 ;; `hl-line-mode' breaks rainbow-mode when activated together
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))
+
+(use-package! lsp-tailwindcss)

@@ -15,10 +15,11 @@
 ;;
 
 (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-tomorrow-day)
 
 ;; "monospace" means use the system default. However, the default is usually two
 ;; points larger than I'd like, so I specify size 12 here.
-(setq doom-font (font-spec :family "Rec Mono Duotone" :size 20))
+(setq doom-font (font-spec :family "Fira Code" :size 20))
 
 ;; Use the default font for neotree
 (setq doom-neotree-enable-variable-pitch nil)

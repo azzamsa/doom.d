@@ -10,6 +10,14 @@
 ;; disabling them outweighs the utility of always keeping them on.
 (setq display-line-numbers-type nil)
 
+;; Sort by modified time
+(setq dired-listing-switches "-alhFt")
+;; Ranger doesn't pickup `dired-listing-switches'
+(setq ranger-listing-switches "-althFt")
+;; Both doesn't work in Ranger. I need to set the sorting
+;; manually and make it persists.
+(setq ranger-persistent-sort t)
+
 ;;
 ;; looks
 ;;

@@ -68,6 +68,14 @@
   ;; `xdg-open' will pick default file manager
   (start-process "" nil "xdg-open" "."))
 
+(defun terminal-here ()
+  "Open a new terminal with current directory as PWD"
+  (interactive)
+  (message "Opening terminal in %s" default-directory)
+  ;; Need to use `expand-file-name` to expand `~` into a full path
+  ;; Otherwise, wezeterm-here fallback to `$HOME`
+  (start-process "" nil "wezterm-here"  (expand-file-name default-directory)))
+
 ;;
 ;; Keybindings
 ;;

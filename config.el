@@ -61,6 +61,13 @@
                             (sequence "DOING(s!)" "|")
                             (sequence "|" "CANCELED(c@)"))))
 
+(defun file-manager-here ()
+  "Open current directory with default file manager"
+  (interactive)
+  (message "Opening file manager in current directory...")
+  ;; `xdg-open' will pick default file manager
+  (start-process "" nil "xdg-open" "."))
+
 ;;
 ;; Keybindings
 ;;

@@ -89,6 +89,11 @@
   :config
   (global-evil-colemak-basics-mode))
 
+;; ranger.el doensn't bind `g g' by default
+(map! :after ranger
+      :map ranger-mode-map
+      "g g" #'ranger-goto-top)
+
 ;;
 ;; misc
 ;;

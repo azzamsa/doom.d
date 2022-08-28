@@ -129,4 +129,11 @@
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))
 
-(use-package! lsp-tailwindcss)
+(use-package! lsp-tailwindcss
+  :config
+  ;; lsp-mode doen't khow what is njk producing `Unable to calculate the languageId for buffer …'
+  (add-to-list 'lsp-language-id-configuration '(".*\\.njk$" . "html")))
+
+(use-package! web-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode)))

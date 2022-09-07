@@ -143,3 +143,6 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode)))
 
+(use-package! json-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.json5\\'" . json-mode)))

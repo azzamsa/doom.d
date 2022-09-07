@@ -134,6 +134,12 @@
   ;; lsp-mode doen't khow what is njk producing `Unable to calculate the languageId for buffer …'
   (add-to-list 'lsp-language-id-configuration '(".*\\.njk$" . "html")))
 
+(use-package! lsp-pyright
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
 (use-package! web-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode)))
+

@@ -6,9 +6,6 @@
 ;; better defaults
 ;;
 
-;; Line numbers are pretty slow all around. The performance boost of
-;; disabling them outweighs the utility of always keeping them on.
-(setq display-line-numbers-type nil)
 
 ;; Sort by modified time
 (setq dired-listing-switches "-alhFt")

@@ -43,7 +43,7 @@
 (setq company-idle-delay 0.5)
 
 
-(use-package! org
+(after! org
   :config
   (defun goto-last-heading ()
     "Useful when adding new heading"
@@ -107,12 +107,9 @@
       ;; whole development environment for some ecosystems.
       +lsp-prompt-to-install-server 'quiet)
 
-;; Emacs LSP on Rust file is nightmare
-;(after! rustic
-;  (setq rustic-lsp-client nil))
-
 ;; It is 21st century, should I save file manually?
 (use-package! super-save
+  :defer 3
   :config
   (add-to-list 'super-save-triggers 'vertico)
   (add-to-list 'super-save-triggers 'magit)
@@ -126,20 +123,20 @@
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))
 
+(use-package! web-mode
+  :defer 3
+  :mode "\\.njk\\'")
+
+(after! json-mode
+  :mode "\\.json5\'")
+
 (use-package! lsp-tailwindcss
+  :after web-mode
   :config
   ;; lsp-mode doen't khow what is njk producing `Unable to calculate the languageId for buffer …'
   (add-to-list 'lsp-language-id-configuration '(".*\\.njk$" . "html")))
 
-(use-package! lsp-pyright
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
-
-(use-package! web-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode)))
-
-(use-package! json-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.json5\\'" . json-mode)))
+;; (after! lsp-pyright
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp))))  ; or lsp-deferred

@@ -6,7 +6,8 @@
 ;; better defaults
 ;;
 
-
+;; Revert buffers automatically when underlying files are changed externally
+(global-auto-revert-mode t)
 ;; Sort by modified time
 (setq dired-listing-switches "-alhFt")
 ;; Ranger doesn't pickup `dired-listing-switches'

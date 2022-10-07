@@ -124,6 +124,11 @@
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
+(use-package! treemacs
+  :defer t
+  :config
+  (setq treemacs-workspace-switch-cleanup t))
+
 ;; `hl-line-mode' breaks rainbow-mode when activated together
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))

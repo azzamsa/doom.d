@@ -107,6 +107,10 @@
       ;; whole development environment for some ecosystems.
       +lsp-prompt-to-install-server 'quiet)
 
+;; My helper functions
+(use-package! aza-scripts
+  :defer 3)
+
 ;; It is 21st century, should I save file manually?
 (use-package! super-save
   :defer 3

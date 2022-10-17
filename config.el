@@ -127,6 +127,7 @@
 (use-package! treemacs
   :defer t
   :config
+  (add-to-list 'treemacs-litter-directories '("target"))
   (setq treemacs-workspace-switch-cleanup t))
 
 (after! magit

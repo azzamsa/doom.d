@@ -15,6 +15,10 @@
 ;; Both doesn't work in Ranger. I need to set the sorting
 ;; manually and make it persists.
 (setq ranger-persistent-sort t)
+;; Delete files to trash , as an extra layer of precaution against
+;; accidentally deleting wanted files.
+;; Doom only enabled it on macOS
+(setq delete-by-moving-to-trash t)
 
 ;;
 ;; looks

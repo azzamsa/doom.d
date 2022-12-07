@@ -116,6 +116,8 @@
 (use-package! aza-scripts
   :defer 3)
 
+(setq projectile-project-search-path '("~/projects" "~/office" "~/playground"))
+
 ;; It is 21st century, should I save file manually?
 (use-package! super-save
   :defer 3

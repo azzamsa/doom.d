@@ -11,3 +11,8 @@
 ;; to get aza-script function loaded
 (package! aza-scripts
   :recipe (:local-repo "~/projects/aza-scripts/"))
+
+(package! hurl-mode :recipe
+  (:host github
+   :repo "Orange-OpenSource/hurl"
+   :files ("contrib/emacs/*.el")))

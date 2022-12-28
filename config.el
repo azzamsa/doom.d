@@ -75,8 +75,8 @@
   (interactive)
   (message "Opening terminal in %s" default-directory)
   ;; Need to use `expand-file-name` to expand `~` into a full path
-  ;; Otherwise, wezeterm-here fallback to `$HOME`
-  (start-process "" nil "wezterm-here"  (expand-file-name default-directory)))
+  ;; Otherwise, zellij-here fallback to `$HOME`
+  (start-process "" nil "zellij-here"  (expand-file-name default-directory)))
 
 ;;
 ;; Keybindings

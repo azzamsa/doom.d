@@ -138,7 +138,7 @@
 
 (after! magit
   :config
-  (setq magit-diff-refine-hunk '(all))
+  (setq magit-diff-refine-hunk 'all)
   (setq magit-log-margin '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)))
 
 ;; `hl-line-mode' breaks rainbow-mode when activated together

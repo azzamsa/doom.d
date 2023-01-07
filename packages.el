@@ -12,7 +12,7 @@
 (package! aza-scripts
   :recipe (:local-repo "~/projects/aza-scripts/"))
 
-(package! hurl-mode :recipe
+(package! hurl-mode :pin "b5e7256" :recipe
   (:host github
    :repo "Orange-OpenSource/hurl"
    :files ("contrib/emacs/*.el")))

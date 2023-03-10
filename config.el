@@ -47,6 +47,14 @@
 ;; rarely. So opt for manual completion:
 (setq company-idle-delay 0.5)
 
+(use-package! abbrev
+  :defer 1
+  :init
+  (setq-default abbrev-mode t)
+  :config
+  (setq abbrev-file-name (concat doom-private-dir "abbrevs.el"))
+  (setq save-abbrevs 'silently))
+
 
 (after! org
   :config

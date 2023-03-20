@@ -6,6 +6,7 @@
 (package! org-cliplink)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 (package! just-mode)
+(package! qml-mode)
 
 ;; Without `package!', I need to execute `doom/reload' after startup
 ;; to get aza-script function loaded

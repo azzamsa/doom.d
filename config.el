@@ -76,7 +76,7 @@
   (interactive)
   (message "Opening file manager in current directory...")
   ;; `xdg-open' will pick default file manager
-  (start-process "" nil "xdg-open" "."))
+  (start-process "" nil "flatpak-spawn" "--host" "xdg-open" "."))
 
 (defun terminal-here ()
   "Open a new terminal with current directory as PWD"

@@ -83,8 +83,11 @@
   (interactive)
   (message "Opening terminal in %s" default-directory)
   ;; Need to use `expand-file-name` to expand `~` into a full path
-  ;; Otherwise, zellij-here fallback to `$HOME`
-  (start-process "" nil "zellij-here"  (expand-file-name default-directory)))
+  ;; Otherwise, termhere fallback to `$HOME`
+  ;; The Rust version of `termhere' only works with `call-process-shell-command',
+  ;; `async-shell-command', and `shell-command'. But the (b)ash version works
+  ;; out of the box. Including with `start-process'
+  (call-process-shell-command (concat "termhere " (expand-file-name default-directory))))
 
 ;;
 ;; Keybindings

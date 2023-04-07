@@ -55,22 +55,6 @@
   (setq abbrev-file-name (concat doom-private-dir "abbrevs.el"))
   (setq save-abbrevs 'silently))
 
-
-(after! org
-  :config
-  (defun goto-last-heading ()
-    "Useful when adding new heading"
-    (interactive)
-    (org-end-of-subtree))
-
-  ;; add time information when a task moves to a DONE state
-  (setq org-log-done 'time)
-
-  (setq org-todo-keywords '((sequence "TODO(t!)" "|" "DONE(d!)")
-                            (sequence "WAITING(w@/!)" "|")
-                            (sequence "DOING(s!)" "|")
-                            (sequence "|" "CANCELED(c@)"))))
-
 (defun file-manager-here ()
   "Open current directory with default file manager"
   (interactive)
@@ -137,7 +121,6 @@
   (add-to-list 'super-save-triggers 'magit)
   (add-to-list 'super-save-triggers 'find-file)
   (add-to-list 'super-save-triggers 'winner-undo)
-
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
@@ -159,9 +142,6 @@
 (use-package! web-mode
   :defer 3
   :mode "\\.njk\\'")
-
-(after! json-mode
-  :mode "\\.json5\'")
 
 (use-package! lsp-tailwindcss
   :after web-mode

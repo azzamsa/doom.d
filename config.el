@@ -3,7 +3,7 @@
 (setq user-full-name "azzamsa"
       user-mail-address "vcs@azzamsa.com")
 ;;
-;; better defaults
+;; Better defaults
 ;;
 
 ;; Revert buffers automatically when underlying files are changed externally
@@ -21,7 +21,26 @@
 (setq delete-by-moving-to-trash t)
 
 ;;
-;; looks
+;; Buit-in
+;;
+
+;; IMO, modern editors have trained a bad habit into us all: a burning need for
+;; completion all the time -- as we type, as we breathe, as we pray to the
+;; ancient ones -- but how often do you *really* need that information? I say
+;; rarely. So opt for manual completion:
+(after! company
+  (setq company-idle-delay 0.5))
+
+(use-package! abbrev
+  :defer 1
+  :init
+  (setq-default abbrev-mode t)
+  :config
+  (setq abbrev-file-name (concat doom-user-dir "abbrevs.el"))
+  (setq save-abbrevs 'silently))
+
+;;
+;; UI
 ;;
 
 (setq doom-theme 'doom-dracula)
@@ -29,49 +48,15 @@
 
 ;; "monospace" means use the system default. However, the default is usually two
 ;; points larger than I'd like, so I specify size 12 here.
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 21))
+(setq doom-theme 'doom-dracula
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 21 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 21))
 
 ;; Use the default font for neotree
 (setq doom-neotree-enable-variable-pitch nil)
 
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-
-;;
-;; buit-in
-;;
-
-;; IMO, modern editors have trained a bad habit into us all: a burning need for
-;; completion all the time -- as we type, as we breathe, as we pray to the
-;; ancient ones -- but how often do you *really* need that information? I say
-;; rarely. So opt for manual completion:
-(setq company-idle-delay 0.5)
-
-(use-package! abbrev
-  :defer 1
-  :init
-  (setq-default abbrev-mode t)
-  :config
-  (setq abbrev-file-name (concat doom-private-dir "abbrevs.el"))
-  (setq save-abbrevs 'silently))
-
-(defun file-manager-here ()
-  "Open current directory with default file manager"
-  (interactive)
-  (message "Opening file manager in current directory...")
-  ;; `xdg-open' will pick default file manager
-  (start-process "" nil "flatpak-spawn" "--host" "xdg-open" "."))
-
-(defun terminal-here ()
-  "Open a new terminal with current directory as PWD"
-  (interactive)
-  (message "Opening terminal in %s" default-directory)
-  ;; Need to use `expand-file-name` to expand `~` into a full path
-  ;; Otherwise, termhere fallback to `$HOME`
-  ;; The Rust version of `termhere' only works with `call-process-shell-command',
-  ;; `async-shell-command', and `shell-command'. But the (b)ash version works
-  ;; out of the box. Including with `start-process'
-  (call-process-shell-command (concat "termhere " (expand-file-name default-directory))))
 
 ;;
 ;; Keybindings
@@ -92,20 +77,30 @@
       "g g" #'ranger-goto-top)
 
 ;;
-;; misc
+;; Modules
 ;;
 
 ;; Emacs doesn't play well with fish
 (setq shell-file-name "/bin/bash")
 
+;;; :editor evil
+;; Focus new window after splitting
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
+
+;;; :tools lsp
 ;; Disable invasive lsp-mode features
-(setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
-      lsp-ui-doc-enable nil        ; slow and redundant with K
-      lsp-enable-symbol-highlighting nil
-      ;; If an LSP server isn't present when I start a prog-mode buffer, you
-      ;; don't need to tell me. I know. On some systems I don't care to have a
-      ;; whole development environment for some ecosystems.
-      +lsp-prompt-to-install-server 'quiet)
+(after! lsp-mode
+  (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
+        lsp-ui-doc-enable nil        ; slow and redundant with K
+        lsp-enable-symbol-highlighting nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some systems I don't care to have a
+        ;; whole development environment for some ecosystems.
+        +lsp-prompt-to-install-server nil))
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
+        lsp-ui-doc-enable nil))     ; redundant with K
 
 ;; My helper functions
 (use-package! aza-scripts
@@ -130,10 +125,15 @@
   (add-to-list 'treemacs-litter-directories '("target"))
   (setq treemacs-workspace-switch-cleanup t))
 
+;;; :tools magit
 (after! magit
   :config
   (setq magit-diff-refine-hunk 'all)
   (setq magit-log-margin '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)))
+
+(after! vterm
+  :config
+  (setq vterm-shell "/bin/zsh"))
 
 ;; `hl-line-mode' breaks rainbow-mode when activated together
 (add-hook! 'rainbow-mode-hook

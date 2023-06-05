@@ -51,6 +51,8 @@
 (setq doom-theme 'doom-dracula
       doom-font (font-spec :family "Iosevka Nerd Font" :size 21 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 21))
+;; Noto Sans sometimes doesn't work
+(add-to-list 'doom-emoji-fallback-font-families "Twemoji")
 
 ;; Use the default font for neotree
 (setq doom-neotree-enable-variable-pitch nil)

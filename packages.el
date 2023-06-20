@@ -5,6 +5,8 @@
 (package! super-save)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 (package! just-mode)
+(package! ron-mode)
+(package! pest-mode)
 
 ;; Without `package!', I need to execute `doom/reload' after startup
 ;; to get aza-script function loaded

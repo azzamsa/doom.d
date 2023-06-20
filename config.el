@@ -43,14 +43,15 @@
 ;; UI
 ;;
 
-(setq doom-theme 'doom-dracula)
-;; (setq doom-theme 'doom-tomorrow-day)
-
 ;; "monospace" means use the system default. However, the default is usually two
 ;; points larger than I'd like, so I specify size 12 here.
-(setq doom-theme 'doom-dracula
+;;
+;; Why <current theme name>?
+;; - Unlike `doom-dracula', `catpuccin-*' doesn't have noticable region color during evil multi-cursor
+(setq doom-theme 'doom-dracula ;; or doom-dracula
       doom-font (font-spec :family "Iosevka Nerd Font" :size 21 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 21))
+
 ;; Noto Sans sometimes doesn't work
 (add-to-list 'doom-emoji-fallback-font-families "Twemoji")
 

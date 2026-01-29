@@ -15,11 +15,6 @@ My personal Doom Emacs 📜 Configuration.
 
 If you're looking for a nice (copy and use) scripts, check out my [useful Emacs Lisp scripts collection](https://azzamsa.com/n/scripts-el/)
 
-## Features
-
-- Colemak-DH keybinding
-- More...
-
 ## Contribution
 
 I don't plan to accept any contribution that adds new functionality. But it is OK for fixes and improvement.

@@ -17,9 +17,11 @@
         modus-themes-bold-constructs t)
   (setq modus-themes-common-palette-overrides
         '(
-          (bg-active   "#2f3849") ; bg-hl-line
+          (bg-main     "#000000")
           (bg-dim      "#0d0e1c") ; bg-main
+          (bg-active   "#1d2235") ; bg-dim
 
+          (bg-main   bg-main)
           (bg-region bg-active)
           ;; Modeline
           (bg-mode-line-active bg-active)
@@ -28,7 +30,7 @@
           (border-mode-line-inactive bg-mode-line-inactive)
           ;; Line numbers
           (bg-line-number-active bg-dim)))
-  (load-theme 'modus-vivendi t))
+  (load-theme 'modus-vivendi-tinted t))
 
 ;; It is 21st century, should I save file manually?
 (use-package! super-save

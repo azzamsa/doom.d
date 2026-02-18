@@ -11,6 +11,9 @@
 (setq doom-font (font-spec :family "Maple Mono NF" :size 25)
       doom-variable-pitch-font (font-spec :family "Maple Mono NF" :size 25))
 
+;;
+(setq-default evil-kill-on-visual-paste nil)
+
 (use-package modus-themes
   :config
   (setq modus-themes-italic-constructs t

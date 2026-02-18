@@ -52,4 +52,4 @@
   (interactive)
   (if (string= (buffer-name) "*eat*")
       (delete-window)
-    (eat-other-window "fish" nil)))
+    (eat-other-window)))

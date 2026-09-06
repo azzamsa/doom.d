@@ -1,7 +1,4 @@
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
+;;; $DOOMDIR/packages.el -*- lexical-binding: t; no-byte-compile: t -*-
 
 (package! super-save)
 (package! modus-themes)
-(package! eat)
-(package! just-mode)

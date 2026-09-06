@@ -8,24 +8,26 @@
 (setq-default vterm-shell "/usr/bin/fish")
 (setq-default explicit-shell-file-name "/usr/bin/fish")
 
-(setq doom-font (font-spec :family "Maple Mono NF" :size 25)
-      doom-variable-pitch-font (font-spec :family "Maple Mono NF" :size 25))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 25)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 25))
 
-;;
-(setq-default evil-kill-on-visual-paste nil)
+(after! dirvish
+  (setq dirvish-hide-details t))
 
-(use-package modus-themes
+;; Disable the dashboard banner
+(setq +dashboard-ascii-banner-fn nil
+      fancy-splash-image nil)
+
+(use-package! modus-themes
   :config
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t)
   (setq modus-themes-common-palette-overrides
-        '(
-          (bg-main     "#000000")
+        '((bg-main     "#000000")
           (bg-dim      "#0d0e1c") ; bg-main
           (bg-active   "#1d2235") ; bg-dim
 
           (bg-main   bg-main)
-          (bg-region bg-active)
           ;; Modeline
           (bg-mode-line-active bg-active)
           (border-mode-line-active bg-mode-line-active)
@@ -33,7 +35,7 @@
           (border-mode-line-inactive bg-mode-line-inactive)
           ;; Line numbers
           (bg-line-number-active bg-dim)))
-  (load-theme 'modus-vivendi-tinted t))
+  (load-theme 'modus-vivendi t))
 
 ;; It is 21st century, should I save file manually?
 (use-package! super-save
@@ -42,17 +44,3 @@
   ;; Save silently
   (setq super-save-silent t)
   (super-save-mode +1))
-
-(after! dirvish
-  (setq dirvish-hide-details t))
-
-;; Emulate A Terminal, in a region, in a buffer and in Eshell
-(use-package eat
-  :config
-  (keymap-global-set "C-/" 'eat-toggle))
-
-(defun eat-toggle ()
-  (interactive)
-  (if (string= (buffer-name) "*eat*")
-      (delete-window)
-    (eat-other-window)))

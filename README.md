@@ -5,10 +5,6 @@
 
 My personal Doom Emacs 📜 Configuration.
 
-<a href="https://github.com/emacs-mirror/emacs/">
-    <img src="https://img.shields.io/badge/GNU%20Emacs-28.1.0-blue" alt="GNU Emacs version" />
-</a>
-
 </div>
 
 ---
